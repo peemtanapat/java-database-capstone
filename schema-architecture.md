@@ -1,18 +1,5 @@
 # Smart Clinic Management System
 
-## Features:
-
-### ✅ Appointments Management
-
-- Let patients book, reschedule, and cancel appointments online.
-- Let doctors view and manage their schedules.
-
-### ✅ Patient Records Management
-
-- Store and manage patient medical histories, and prescriptions.
-
-### ✅ Administrative Tasks
-
 ## Architecture Summary
 
 This Spring Boot application uses both MVC and REST controllers. Thymeleaf templates are used for the Admin and Doctor dashboards, while REST APIs serve all other modules. The application interacts with two databases—MySQL (for patient, doctor, appointment, and admin data) and MongoDB (for prescriptions). All controllers route requests through a common service layer, which in turn delegates to the appropriate repositories. MySQL uses JPA entities while MongoDB uses document models. Three-tier Design: Presentation, Application, and Data layers:
