@@ -1,0 +1,29 @@
+services:
+  mysql-db:
+    image: mysql:8.4.5
+    container_name: mysql-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: smart_clinic_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  mongo-db:
+    image: mongo
+    container_name: mongo-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: smart_clinic_db
+    volumes:
+      - "mongodb_data:/data/db"
+    ports:
+      - "27017:27017"
+volumes:
+  db_data:
+  mongodb_data:

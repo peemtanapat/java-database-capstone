@@ -18,7 +18,7 @@
 4. As a patient, I want to **log out of the portal**, so that my account remains secure.
 5. As a patient, I want to **book an hour-long appointment with a doctor**, so that I can receive consultation.
 6. As a patient, I want to **view my upcoming appointments**, so that I can prepare accordingly.
-7. As a patient, I want to cancel or reschedule my appointment at least 24 hours in advance, so that I can manage unexpected schedule changes without affecting clinic operations.
+7. As a patient, I want to **cancel or reschedule my appointment** at least 24 hours in advance, so that I can manage unexpected schedule changes without affecting clinic operations.
 
 ---
 
