@@ -28,7 +28,7 @@
 2. As a doctor, I want to **log out of the portal**, so that my data is protected.
 3. As a doctor, I want to **view my appointment calendar**, so that I can stay organized.
 4. As a doctor, I want to **mark my unavailability**, so that patients can only book available slots.
-5. As a doctor, I want to **update my profile with specialization and contact information**, so that patients have accurate details.
+5. As a doctor, I want to **update my profile with specialty and contact information**, so that patients have accurate details.
 6. As a doctor, I want to **view patient details for upcoming appointments**, so that I can be prepared.
 
 ---
@@ -85,7 +85,7 @@ As an admin, I want to add doctors to the portal, so that they can provide servi
 
 **Acceptance Criteria:**
 
-1. Admin can enter doctor details (name, specialization, contact info: address, email, phoneNo).
+1. Admin can enter doctor details (name, specialty, contact info: address, email, phoneNo).
 2. System validates required fields before submission.
 3. Doctor profile is visible to patients after addition.
 
@@ -144,7 +144,7 @@ As a patient, I want to view a list of doctors without logging in, so that I can
 
 **Acceptance Criteria:**
 
-1. Patients can view doctor names, specialization, and availability.
+1. Patients can view doctor names, specialty, and availability.
 2. No login is required to browse doctors.
 3. System prevents booking without registration.
 
@@ -350,11 +350,11 @@ As a doctor, I want to mark my unavailability, so that patients can only book av
 ### Story 5: Update Profile
 
 **Title:**  
-As a doctor, I want to update my profile with specialization and contact information, so that patients have accurate details.
+As a doctor, I want to update my profile with specialty and contact information, so that patients have accurate details.
 
 **Acceptance Criteria:**
 
-1. Editable fields include specialization, phone, and email.
+1. Editable fields include specialty, phone, and email.
 2. Validation on required fields.
 3. Updated data reflects instantly.
 

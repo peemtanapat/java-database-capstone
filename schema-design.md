@@ -34,7 +34,7 @@ Including 6 tables (Patient, Doctor, Appointment, Admin, UserAccount, Department
 - user_account_id (FK → UserAccount)
 - department_id (FK -> Department)
 - license_number VARCHAR
-- specialization VARCHAR
+- specialty VARCHAR
 - created_at DATETIME
 - updated_at DATETIME
 
