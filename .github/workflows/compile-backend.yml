@@ -12,10 +12,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: "oracle"
+          distribution: "temurin"
           java-version: "17"
+          cache: maven
 
       - name: Compile with Maven
         run: |
           cd app
-          mvn clean compile
+          ./mvnw clean compile
