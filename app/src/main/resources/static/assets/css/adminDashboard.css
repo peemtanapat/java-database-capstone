@@ -8,8 +8,8 @@
   --text-color: #333;
   --bg-color: #f9f9f9;
   --border-color: #ddd;
-  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  --font-family: "Segoe UI", tahoma, geneva, verdana, sans-serif;
   --font-size-base: 16px;
   --spacing-unit: 1rem;
   --border-radius: 8px;
@@ -75,7 +75,7 @@ select {
 select:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(166, 43, 31, 0.1);
+  box-shadow: 0 0 0 3px rgb(166 43 31 / 10%);
 }
 
 select {
@@ -100,7 +100,7 @@ button {
 button:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
 }
 
 button:active {
@@ -109,7 +109,7 @@ button:active {
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(166, 43, 31, 0.3);
+  box-shadow: 0 0 0 3px rgb(166 43 31 / 30%);
 }
 
 .adminBtn {
@@ -127,7 +127,7 @@ button:focus {
   color: white;
   border-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
 }
 
 /* Links */
@@ -239,7 +239,7 @@ a:hover {
 }
 
 /* Responsive Table */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   #doctorList th,
   #doctorList td {
     padding: 0.75rem 0.5rem;
@@ -260,7 +260,7 @@ a:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0 0 0 / 50%);
   animation: fadeIn 0.3s ease;
 }
 
@@ -271,7 +271,7 @@ a:hover {
   border-radius: var(--border-radius);
   width: 90%;
   max-width: 500px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
   animation: slideIn 0.3s ease;
 }
 
@@ -293,6 +293,7 @@ a:hover {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -303,6 +304,7 @@ a:hover {
     transform: translateY(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -310,7 +312,7 @@ a:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .main-content {
     padding: 1rem;
   }
@@ -335,7 +337,7 @@ a:hover {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   h2 {
     font-size: 1.75rem;
   }

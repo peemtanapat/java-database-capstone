@@ -3,7 +3,7 @@ name: Lint Java Backend
 on: [push, pull_request]
 
 jobs:
-  lint:
+  lint-java:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
