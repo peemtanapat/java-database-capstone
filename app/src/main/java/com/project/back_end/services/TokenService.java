@@ -20,20 +20,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Component
 public class TokenService {
 
     private final AdminRepository adminRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
-
-    public TokenService(AdminRepository adminRepository, DoctorRepository doctorRepository,
-            PatientRepository patientRepository) {
-        this.adminRepository = adminRepository;
-        this.doctorRepository = doctorRepository;
-        this.patientRepository = patientRepository;
-    }
 
     @Value("${jwt.secret}")
     private String secret;

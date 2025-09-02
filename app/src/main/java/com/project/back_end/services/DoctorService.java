@@ -19,7 +19,9 @@ import com.project.back_end.repo.AppointmentRepository;
 import com.project.back_end.repo.DoctorRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
 public class DoctorService {
 
@@ -27,14 +29,6 @@ public class DoctorService {
         private final AppointmentRepository appointmentRepository;
         private final TokenService tokenService;
         private final UserAccountRepository userAccountRepository;
-
-        public DoctorService(DoctorRepository doctorRepository, AppointmentRepository appointmentRepository,
-                        TokenService tokenService, UserAccountRepository userAccountRepository) {
-                this.doctorRepository = doctorRepository;
-                this.appointmentRepository = appointmentRepository;
-                this.tokenService = tokenService;
-                this.userAccountRepository = userAccountRepository;
-        }
 
         @Transactional
         public List<DoctorDTO> getDoctors() {
