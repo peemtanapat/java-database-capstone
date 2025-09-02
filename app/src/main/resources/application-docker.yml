@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306/smart_clinic_db?usessl=false
+    username: admin
+    password: admin
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  data:
+    mongodb:
+      host: host.docker.internal
+      port: 27017
+      username: root
+      password: root
+      database: smart_clinic_db
+      authentication-database: admin
+
+jwt:
+  secret: a24fca88bbe83439a16493430e9d316c38a177006dbe1bf713e75287a8609559DDCPN0234FCFDPD8670M
+  expiration: 3600000 # 1h
