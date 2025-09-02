@@ -13,6 +13,8 @@ FROM eclipse-temurin:21-jre-alpine
 ENV SPRING_PROFILES_ACTIVE=docker
 ENV PORT=8080
 
+WORKDIR /app
+
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE $PORT
