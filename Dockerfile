@@ -10,8 +10,11 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre-alpine
 
+ENV SPRING_PROFILES_ACTIVE=docker
+ENV PORT=8080
+
 COPY --from=build /app/target/*.jar app.jar
 
-ENV SPRING_PROFILES_ACTIVE=docker
+EXPOSE $PORT
 
 ENTRYPOINT  [ "java", "-jar", "app.jar" ]
