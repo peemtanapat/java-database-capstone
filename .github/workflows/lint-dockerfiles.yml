@@ -3,7 +3,7 @@ name: Lint Dockerfiles
 on:
   push:
     paths:
-      - "Dockerfile*"
+      - "Dockerfile"
 
 jobs:
   dockerlint:
