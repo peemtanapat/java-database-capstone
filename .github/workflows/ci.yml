@@ -19,4 +19,4 @@ jobs:
         run: |
           mkdir checkstyle
           curl -L -o checkstyle/checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.1/checkstyle-10.12.1-all.jar
-          java -jar checkstyle/checkstyle.jar -c /google_checks.xml src/
+          java -jar checkstyle/checkstyle.jar -c /google_checks.xml app/src/
