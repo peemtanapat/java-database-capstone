@@ -1,0 +1,22 @@
+name: Compile Java Backend
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: maven
+
+      - name: Compile with Maven
+        run: |
+          cd app
+          mvn clean compile
