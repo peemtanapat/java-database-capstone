@@ -1,6 +1,6 @@
 name: Lint Java Backend
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   lint-java:
