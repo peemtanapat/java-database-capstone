@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,12 +28,15 @@ public class Appointment extends BaseModel {
     @JsonBackReference("doctor-appointment")
     private Doctor doctor;
 
+    @Future
     @NotNull
     private LocalDateTime scheduleStart;
 
+    @Future
     @NotNull
     private LocalDateTime scheduleEnd;
 
+    @Column(columnDefinition = "bit(1) default true")
     private boolean isActive;
 
     private String department;

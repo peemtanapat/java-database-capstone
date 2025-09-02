@@ -29,6 +29,8 @@ public class Prescription {
     @NotNull
     private String patientName;
 
+    private int appointmentId;
+
     @NotNull
     private String medication;
 

@@ -28,16 +28,16 @@ public class Patient extends BaseModel {
     @JsonManagedReference("patient-appointment")
     private List<Appointment> appointments;
 
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 100)
     @NotNull
-    private String firstName;
-
-    @Size(min = 3, max = 50)
-    @NotNull
-    private String lastName;
+    private String name;
 
     @NotNull
     private LocalDate dob;
+
+    @Size(min = 3, max = 256)
+    @NotNull
+    private String address;
 
     @Pattern(regexp = "^(?:\\+66|0)(6|8|9|2)\\d{7,8}$")
     @NotNull
