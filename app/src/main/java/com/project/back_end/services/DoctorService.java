@@ -19,9 +19,7 @@ import com.project.back_end.repo.AppointmentRepository;
 import com.project.back_end.repo.DoctorRepository;
 
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
 public class DoctorService {
 
@@ -30,11 +28,14 @@ public class DoctorService {
         private final TokenService tokenService;
         private final UserAccountRepository userAccountRepository;
 
-        // 7. **getDoctors Method**:
-        // - Fetches all doctors from the database. It is marked with `@Transactional`
-        // to ensure that the collection is properly loaded.
-        // - Instruction: Ensure that the collection is eagerly loaded, especially if
-        // dealing with lazy-loaded relationships (e.g., available times).
+        public DoctorService(DoctorRepository doctorRepository, AppointmentRepository appointmentRepository,
+                        TokenService tokenService, UserAccountRepository userAccountRepository) {
+                this.doctorRepository = doctorRepository;
+                this.appointmentRepository = appointmentRepository;
+                this.tokenService = tokenService;
+                this.userAccountRepository = userAccountRepository;
+        }
+
         @Transactional
         public List<DoctorDTO> getDoctors() {
                 List<Doctor> all = doctorRepository.findAll();
