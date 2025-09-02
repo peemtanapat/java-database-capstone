@@ -1,3 +1,146 @@
+// index.js
+
+function adminLogin() {
+  openModal("adminLogin");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const _adminBtn = document.getElementById("adminLogin");
+
+  if (_adminBtn) {
+    _adminBtn.addEventListener("click", adminLogin);
+  }
+
+  const _doctorBtn = document.getElementById("doctorLogin");
+
+  if (_doctorBtn) {
+    _doctorBtn.addEventListener("click", doctorLogin);
+  }
+
+  const _patientBtn = document.getElementById("patientLogin");
+
+  if (_patientBtn) {
+    _patientBtn.addEventListener("click", patientLogin);
+  }
+});
+
+function doctorLogin() {
+  openModal("doctorLogin");
+}
+
+function adminLoginHandler() {
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+  loginAdmin(username.value, password.value)
+    .then((res) => {
+      if (res.success) {
+        localStorage.setItem("token", res.message);
+        localStorage.setItem("userRole", "admin");
+        // Redirect to admin dashboard
+        window.location.href = `/adminDashboard/${res.message}`;
+      } else {
+        alert("Login failed: " + res.message);
+      }
+    })
+    .catch((err) => {
+      console.error({ err });
+      alert("Login error: " + err.message);
+    });
+}
+
+async function loginAdmin(username, password) {
+  try {
+    // const response = await fetch(`${APPOINTMENT_API}/${token}`, {
+    const response = await fetch(`http://localhost:8080/admin/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    return {
+      success: response.ok,
+      message: data.token || "-",
+    };
+  } catch (error) {
+    console.error("Error while booking appointment:", error);
+    return {
+      success: false,
+      message: "Network error. Please try again later.",
+    };
+  }
+}
+
+window.adminLoginHandler = adminLoginHandler;
+// window.signupPatient = signupPatient;
+// window.loginPatient = loginPatient;
+window.adminAddDoctorHandler = adminAddDoctorHandler;
+window.doctorLoginHandler = doctorLoginHandler;
+
+async function adminAddDoctorHandler() {
+  // Placeholder for adding doctor
+  alert("Add doctor functionality not implemented yet");
+}
+
+function doctorLoginHandler() {
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+
+  loginDoctor(email.value, password.value)
+    .then((res) => {
+      if (res.success) {
+        localStorage.setItem("token", res.message);
+        // Redirect to doctor dashboard
+        window.location.href = `/doctorDashboard/${res.message}`;
+      } else {
+        alert("Login failed: " + res.message);
+      }
+    })
+    .catch((err) => {
+      console.error({ err });
+      alert("Login error: " + err.message);
+    });
+}
+
+async function loginDoctor(email, password) {
+  const auth = {
+    email,
+    password,
+  };
+
+  try {
+    const response = await fetch(`http://localhost:8080/doctor/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    return {
+      success: response.ok,
+      message: data.token || "-",
+    };
+  } catch (error) {
+    console.error("Error while logging in doctor:", error);
+    return {
+      success: false,
+      message: "Network error. Please try again later.",
+    };
+  }
+}
+
 /*
   Import the openModal function to handle showing login popups/modals
   Import the base API URL from the config file

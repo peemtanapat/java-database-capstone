@@ -3,6 +3,7 @@ package com.project.back_end.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,14 +17,10 @@ public class Admin extends BaseModel {
     @JoinColumn(name = "user_account_id")
     private UserAccount userAccount;
 
-    @Size(min = 3, max = 50)
-    private String firstName;
-
-    @Size(min = 3, max = 50)
-    private String lastName;
+    @Size(min = 3, max = 100)
+    @NotNull
+    private String name;
 
     private String permissionsLevel;
-
-    private String department;
 
 }

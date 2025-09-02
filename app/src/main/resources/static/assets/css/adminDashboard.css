@@ -1,94 +1,371 @@
-/*this is the style sheet for the adminDashboard. */
+/* Admin Dashboard Styles - Best Practices for UX/UI */
 
-/* 
-Global Reset (`*`)
+/* CSS Variables for Consistency */
+:root {
+  --primary-color: #a62b1f;
+  --primary-hover: #8a2319;
+  --secondary-color: #003e3e;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+  --border-color: #ddd;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-base: 16px;
+  --spacing-unit: 1rem;
+  --border-radius: 8px;
+}
 
-* Purpose: Ensure consistent layout across all browsers.
-* Properties:
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  * `margin: 0` — removes default outer spacing from all elements.
-  * `padding: 0` — removes default inner spacing.
-  * `box-sizing: border-box` — ensures padding and borders are included within the total width/height of elements.
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
 
-Base HTML & Body (`html, body`)
+/* Layout */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-* Purpose: Establish a full-height layout and apply a standard font across the page.
-* Properties:
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-attachment: fixed;
+}
 
-  * `height: 100%` — allows containers to stretch to the full viewport height.
-  * `font-family: Arial, sans-serif` — applies a clean, readable sans-serif font.
+/* Typography */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
-Main Layout Wrapper (`.wrapper`)
+/* Form Elements */
+.input-field,
+select {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
 
-* Purpose: Create a flexible, vertical layout that fills the entire screen.
-* Properties:
+.input-field:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(166, 43, 31, 0.1);
+}
 
-  * `display: flex` — enables flexbox for layout control.
-  * `flex-direction: column` — stacks children vertically.
-  * `min-height: 100vh` — ensures the wrapper always covers full screen height.
+select {
+  cursor: pointer;
+}
 
-Section Heading (`h2`)
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+}
 
-* Purpose: Style the headings prominently for section separation.
-* Properties:
+button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
-  * `font-size: 32px` — makes the heading large and noticeable.
-  * `font-weight: bold` — emphasizes text.
-  * `margin-bottom: 50px` — creates space below the heading.
-  * `color: #003e3e` — uses a strong teal for visual anchoring.
+button:active {
+  transform: translateY(0);
+}
 
-Main Content Section (`.main-content`)
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(166, 43, 31, 0.3);
+}
 
-* Purpose: Layout the main content with padding and a background image.
-* Properties:
+.adminBtn {
+  background-color: white;
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  font-weight: 600;
+  width: auto;
+  min-width: 120px;
+  transition: all 0.3s ease;
+}
 
-  * `flex-grow: 1` — lets the content fill the available vertical space.
-  * `padding: 40px` — adds internal spacing around content.
-  * `display: flex` and `flex-direction: column` — organizes content in a vertical stack.
-  * `text-align: center` — centers the text.
-  * `background-image: url("index.png")` — sets a full-screen dashboard background.
-  * `background-size: cover` — ensures the image covers the whole section.
-  * `background-position: center` — centers the image.
-  * `background-repeat: no-repeat` — avoids tiling the image.
-  * `background-attachment: fixed` — fixes the image while scrolling.
+.adminBtn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
-Primary Button (`button`)
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
-* Purpose: Design prominent, interactive buttons for main actions.
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
 
-* Properties:
+/* Doctor List */
+#doctorList {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 2rem;
+  overflow-x: auto;
+}
 
-  * `background-color: #A62B1F` — sets a bold red color.
-  * `color: white` — makes text stand out.
-  * `border: none` — removes any outline/border.
-  * `border-radius: 12px` — creates rounded corners.
-  * `padding: 10px 20px` — gives space inside the button.
-  * `margin-top: 20px` — adds spacing above the button.
-  * `width: 200px` — ensures consistent button width.
-  * `cursor: pointer` — shows a hand icon on hover.
-  * `font-size: 16px` — makes the text readable.
+#doctorList table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
 
-* On Hover:
+#doctorList th,
+#doctorList td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
 
-  * Retains the same red background to maintain branding.
+#doctorList th {
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
 
-Admin Button (`.adminBtn`)
+#doctorList th:first-child {
+  border-left: 1px solid var(--border-color);
+  border-top-left-radius: var(--border-radius);
+}
 
-* Purpose: Provide a secondary button style for admin-specific actions.
+#doctorList th:last-child {
+  border-right: 1px solid var(--border-color);
+  border-top-right-radius: var(--border-radius);
+}
 
-* Properties:
+#doctorList tbody tr:last-child td {
+  border-bottom: 1px solid var(--border-color);
+}
 
-  * `background-color: #f4f4f4` — uses a light grey background.
-  * `color: #333` — uses dark text for contrast.
-  * `font-weight: bold` — emphasizes text.
-  * `width: 110px` — smaller, compact width.
-  * `padding: 10px 0` — vertical padding only.
-  * `border: none` — clean look.
-  * `cursor: pointer` — indicates it's clickable.
+#doctorList tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--border-radius);
+}
 
-* On Hover**:
+#doctorList tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--border-radius);
+}
 
-   Changes text color to `#A62B1F` for brand consistency while keeping the background same.
+#doctorList tbody tr {
+  transition: background-color 0.3s ease;
+}
 
+#doctorList tbody tr:hover {
+  background-color: #f1f1f1;
+}
 
-*/
+#doctorList tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#doctorList td {
+  font-size: 0.95rem;
+}
+
+#doctorList .action-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+#doctorList .action-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+#doctorList .action-btn:last-child {
+  margin-right: 0;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  #doctorList th,
+  #doctorList td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  #doctorList th {
+    font-size: 0.75rem;
+  }
+}
+
+/* Modal Styles (Basic) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .input-field,
+  select {
+    max-width: 100%;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .adminBtn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .main-content {
+    gap: 1rem;
+  }
+
+  .modal-content {
+    margin: 20% auto;
+    padding: 1rem;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000;
+    --secondary-color: #000;
+    --bg-color: #fff;
+    --text-color: #000;
+    --border-color: #000;
+  }
+}

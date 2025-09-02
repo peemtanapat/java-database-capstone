@@ -1,13 +1,15 @@
 // render.js
+import { getRole, setRole } from "./util.js";
 
-function selectRole(role) {
+export function selectRole(role) {
   setRole(role);
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   if (role === "admin") {
     if (token) {
       window.location.href = `/adminDashboard/${token}`;
     }
-  } if (role === "patient") {
+  }
+  if (role === "patient") {
     window.location.href = "/pages/patientDashboard.html";
   } else if (role === "doctor") {
     if (token) {
@@ -18,7 +20,6 @@ function selectRole(role) {
   }
 }
 
-
 function renderContent() {
   const role = getRole();
   if (!role) {
@@ -26,3 +27,11 @@ function renderContent() {
     return;
   }
 }
+
+window.selectRole = selectRole;
+window.renderContent = renderContent;
+
+// Call the function when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  renderContent();
+});

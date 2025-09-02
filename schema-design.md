@@ -2,68 +2,68 @@
 
 ## SQL Database Design:
 
-Including 6 tables (Patient, Doctor, Appointment, Admin, UserAccount, Department)
-
-## Appointment Table
-
-- patient_id BIGINT (PK,FK -> Patient)
-- doctor_id BIGINT (PK,FK -> Doctor)
-- schedule_start DATETIME
-- schedule_end DATETIME
-- is_active boolean
-- department_id (FK -> Department)
-- updated_at DATETIME
-- created_at DATETIME
-
-## 👤 Patient Table
+### Common Fields (from BaseModel)
 
 - id BIGINT Auto Increment (PK)
-- user_account_id (FK → UserAccount)
-- first_name VARCHAR
-- last_name VARCHAR
-- dob date
-- phone_number VARCHAR
-- emergency_contact VARCHAR
-- medical_record_number
-- updated_at DATETIME
-- created_at DATETIME
-
-## 🩺 Doctor Table
-
-- id BIGINT Auto Increment (PK)
-- user_account_id (FK → UserAccount)
-- department_id (FK -> Department)
-- license_number VARCHAR
-- specialty VARCHAR
 - created_at DATETIME
 - updated_at DATETIME
 
-## Admin Table
+### UserAccount Table
 
 - id BIGINT Auto Increment (PK)
-- user_account_id (FK → UserAccount)
-- first_name, last_name
-- department_id (FK -> Department)
-- permissions_level
-
-## 🧾 UserAccount Table
-
-- id BIGINT Auto Increment (PK)
-- role (OPTION: 'patient', 'doctor', 'admin')
-- email VARCHAR (UNIQUE)
-- password VARCHAR
-- is_active boolean
+- email VARCHAR (UNIQUE, NOT NULL)
+- password VARCHAR (NOT NULL)
+- role ENUM('PATIENT', 'DOCTOR', 'ADMIN') (NOT NULL)
+- is_active BOOLEAN DEFAULT TRUE
 - last_login DATETIME
 - created_at DATETIME
 - updated_at DATETIME
 
-## 💼 Department Table:
+### Doctor Table
 
 - id BIGINT Auto Increment (PK)
-- department_name ('Cardiology', 'Pediatrics', 'Radiology', etc.)
-- description
-- location VARCHAR
-- floor VARCHAR
+- user_account_id BIGINT (FK → UserAccount)
+- name VARCHAR(100) (NOT NULL)
+- specialty VARCHAR (NOT NULL)
+- department VARCHAR
+- phone_number VARCHAR (NOT NULL, format: ^(?:\+66|0)(6|8|9|2)\d{7,8}$)
+- created_at DATETIME
+- updated_at DATETIME
+
+#### Doctor Available Times Table (doctor_available_times)
+
+- doctor_id BIGINT (FK → Doctor)
+- available_time TIME
+
+### Admin Table
+
+- id BIGINT Auto Increment (PK)
+- user_account_id BIGINT (FK → UserAccount)
+- name VARCHAR(100) (NOT NULL)
+- permissions_level VARCHAR
+- created_at DATETIME
+- updated_at DATETIME
+
+### Patient Table
+
+- id BIGINT Auto Increment (PK)
+- user_account_id BIGINT (FK → UserAccount)
+- name VARCHAR(100) (NOT NULL)
+- dob DATE (NOT NULL)
+- address VARCHAR(256) (NOT NULL)
+- phone_number VARCHAR (NOT NULL, format: ^(?:\+66|0)(6|8|9|2)\d{7,8}$)
+- created_at DATETIME
+- updated_at DATETIME
+
+### Appointment Table
+
+- id BIGINT Auto Increment (PK)
+- patient_id BIGINT (FK → Patient)
+- doctor_id BIGINT (FK → Doctor)
+- schedule_start DATETIME (NOT NULL, FUTURE)
+- schedule_end DATETIME (NOT NULL, FUTURE)
+- is_active BOOLEAN DEFAULT TRUE
+- department VARCHAR
 - created_at DATETIME
 - updated_at DATETIME
 

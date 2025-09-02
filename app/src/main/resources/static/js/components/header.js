@@ -1,3 +1,9 @@
+window.logout = function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userRole");
+  window.location.href = "/";
+};
+
 /*
   Step-by-Step Explanation of Header Section Rendering
 
@@ -122,4 +128,3 @@
 
   16. **Render the Header**: Finally, the `renderHeader()` function is called to initialize the header rendering process when the page loads.
 */
-   

@@ -1,41 +1,92 @@
 <!-- adminDashboard.html -->
 
+<!DOCTYPE html>
+<!-- to allow Thymeleaf-specific attributes in Spring-based apps. -->
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}" />
+    <script type="module" th:src="@{/js/adminDashboard.js}" defer></script>
+    <script
+      type="module"
+      th:src="@{/js/services/doctorServices.js}"
+      defer
+    ></script>
+    <script type="module" th:src="@{/js/render.js}" defer></script>
+    <script type="module" th:src="@{/js/util.js}" defer></script>
+    <script type="module" th:src="@{/js/components/header.js}" defer></script>
+    <script type="module" th:src="@{/js/components/modals.js}" defer></script>
+    <link
+      rel="icon"
+      type="image/png"
+      th:href="@{/assets/images/logo/logo.png}"
+    />
+    <title>Admin Dashboard - Smart Clinic Management System</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div id="header"></div>
+        <main class="main-content">
+          <h2>Admin Dashboard</h2>
+          <button
+            id="addDocBtn"
+            class="adminBtn"
+            onclick="openModal('addDoctor')"
+          >
+            Add Doctor
+          </button>
+          <a href="#" onclick="logout()">Logout</a>
+          <select id="filterType" class="input-field">
+            <option value="name">Filter by Name</option>
+            <option value="specialty">Filter by Specialty</option>
+            <option value="availableTimes">Filter by Available Times</option>
+            <option value="email">Filter by Email</option>
+            <option value="phoneNumber">Filter by Phone</option>
+          </select>
+          <input
+            id="searchBar"
+            type="text"
+            placeholder="Search doctors..."
+            class="input-field"
+          />
+          <div id="doctorList">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Specialty</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="doctorTableBody">
+                <!-- Doctor rows will be loaded here dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </main>
+        <div id="footer"></div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
 <!-- 
 Step-by-Step Explanation of `adminDashboard.html`
 This file creates the Admin Dashboard interface for managing doctor-related data 
 with search, filter, and modal functionality.
 
-
-1. Declare the Document Type
-
-   * Use `<!DOCTYPE html>` to ensure HTML5 standards for consistent rendering across browsers.
-
-2. Begin the HTML Document with Thymeleaf Namespace
-
-   * Add the `<html>` tag with `xmlns:th="http://www.thymeleaf.org"` to allow Thymeleaf-specific attributes in Spring-based apps.
-
-3. Head Section – Metadata and Resources
-
-   * Open the `<head>` section for meta info and links to assets and scripts.
-
-4. Set Character Encoding
-
-   * Use UTF-8 to support all characters and prevent encoding issues.
-
-5. Set the Favicon
-
-   * Add a favicon for browser tabs using Thymeleaf pathing: 
-     `<link rel="icon" type="image/png" th:href="@{/assets/images/logo/logo.png}" />`.
-
-6. Set the Page Title
-
-   * Give the page a title, e.g., `"Admin Dashboard"`, which will show in the browser tab.
-
-7. Link CSS Stylesheets
-
-   * Include dashboard-specific styles and global site-wide styles:
-     - `adminDashboard.css` for layout and design of this page.
-     - `style.css` for shared UI components.
 
 8. Link JavaScript Files (with `defer`)
 
@@ -106,4 +157,3 @@ with search, filter, and modal functionality.
     * Finish the structure by properly closing all tags.
 
  -->
-

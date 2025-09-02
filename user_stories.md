@@ -7,6 +7,7 @@
 3. As an admin, I want to **add doctors to the portal**, so that they can provide services to patients.
 4. As an admin, I want to **delete a doctor's profile from the portal**, so that outdated or invalid records are removed.
 5. As an admin, I want to **run a stored procedure in MySQL CLI to get the number of appointments per month**, so that I can track usage statistics.
+6. As an admin, I want to **filter doctors by name, specialty, available times, email, and phone number**, so that I can quickly find and manage doctor profiles.
 
 ---
 
@@ -78,7 +79,7 @@ As an admin, I want to log out of the portal, so that system access remains prot
 
 ---
 
-### Story 3: Add Doctor
+### Story 3: Admin Add Doctor
 
 **Title:**  
 As an admin, I want to add doctors to the portal, so that they can provide services to patients.
@@ -97,7 +98,7 @@ As an admin, I want to add doctors to the portal, so that they can provide servi
 
 ---
 
-### Story 4: Delete Doctor
+### Story 4: Admin Delete Doctor
 
 **Title:**  
 As an admin, I want to delete a doctor's profile from the portal, so that outdated or invalid records are removed.
@@ -116,7 +117,7 @@ As an admin, I want to delete a doctor's profile from the portal, so that outdat
 
 ---
 
-### Story 5: Appointment Stats
+### Story 5: Admin Appointment Stats
 
 **Title:**  
 As an admin, I want to run a stored procedure in MySQL CLI to get the number of appointments per month, so that I can track usage statistics.
@@ -132,6 +133,29 @@ As an admin, I want to run a stored procedure in MySQL CLI to get the number of 
 **Notes:**
 
 - Later, provide this as a UI dashboard instead of CLI only.
+
+---
+
+### Story 6: Admin Filter Doctors
+
+**Title:**  
+As an admin, I want to filter doctors by name, specialty, available times, email, and phone number, so that I can quickly find and manage doctor profiles.
+
+**Acceptance Criteria:**
+
+1. Admin can select filter type (name, specialty, available times, email, phone number) from a dropdown.
+2. Admin can enter a search value to filter the doctor list.
+3. The doctor list updates dynamically based on the selected filter and search value.
+4. Filtering works for partial matches (e.g., part of name or email).
+5. Admin can combine filters for more precise results (optional/future).
+
+**Priority:** Medium  
+**Story Points:** 5
+**Notes:**
+
+- Filtering should be fast and responsive.
+- Useful for large clinics with many doctors.
+- Consider adding more filter options in the future if needed.
 
 ---
 
